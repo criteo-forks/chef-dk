@@ -1,3 +1,26 @@
+# Criteo backport
+
+## Policyfiles: updated `include_policy` support
+
+Policyfiles now support git targets for included policies.
+
+```
+include_policy 'base_policy',
+               git: 'https://github.com/happychef/chef-repo.git',
+               branch: master,
+               path: 'policies/base/Policyfile.lock.json'
+```
+
+## Policyfiles: `chef update` gains `--update-strategy` option
+
+This option can take two values:
+
+- 'relaxed' (default value). This was the behavior before this release
+`chef update Policyfile.rb apache2` will upgrade apache2 and all its
+dependencies
+- 'strict'. This behavior is very strict: it updates only the cookbook(s)
+mentionned in the command line.
+
 # ChefDK 2.5 Release Notes
 
 ## Rename `smoke` tests to `integration` tests.
